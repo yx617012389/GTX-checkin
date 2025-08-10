@@ -19,11 +19,13 @@ jobs:
 
       - name: Install Playwright
         run: |
-          pip install playwright
+          pip install playwright requests
           playwright install chromium
 
       - name: Run script
         env:
           GTX_COOKIE: ${{ secrets.GTX_COOKIE }}
           SERVER_IDS: ${{ secrets.SERVER_IDS }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: python main.py
