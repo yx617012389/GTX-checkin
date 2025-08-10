@@ -1,0 +1,29 @@
+name: GTXGaming Extend
+
+on:
+  schedule:
+    - cron: "0 2 * * *"  # UTC 时间每天 2:00 自动执行
+  workflow_dispatch:     # 手动触发
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      - name: Run script
+        env:
+          GTX_COOKIE: ${{ secrets.GTX_COOKIE }}
+          SERVER_IDS: ${{ secrets.SERVER_IDS }}
+        run: python main.py
