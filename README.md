@@ -1,1 +1,6 @@
 # GTX-checkin
+
+GTX_COOKIE
+SERVER_IDS  # 多个服务器 ID 用逗号分隔
+TG_BOT_TOKEN
+TG_CHAT_ID
